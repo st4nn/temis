@@ -18,11 +18,13 @@
     <link rel="stylesheet" href="../vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="../vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../vendor/sweetalert/lib/sweet-alert.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="../fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="../fonts/pe-icon-7-stroke/css/helper.css" />
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/static_custom.css">
 
 </head>
 <body class="hide-sidebar">
@@ -53,7 +55,7 @@
             </button>
             <div class="collapse mobile-navbar" id="mobile-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="lnkCerrarSesion">
                         <a class="" href="../index.html">Logout</a>
                     </li>
                 </ul>
@@ -61,7 +63,7 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav no-borders">
-                <li class="dropdown">
+                <li class="dropdown lnkCerrarSesion">
                     <a href="../index.html">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
@@ -90,62 +92,66 @@
             <div class="col-md-8">
                 <div class="hpanel">
                     <div class="panel-body">
-                        <div class="text-justify">
-                            Yo, 
-                            <input placeholder="INGRESE SU NOMBRE AQUí" id="txtFormato2_Nombre" type="text" style="border:none;border-bottom: solid 1px; width:175px; text-transform: capitalize;">
-                            , identificado/a con cédula de ciudadanía No. 
-                            <input placeholder="INGRESE SU NÚMERO DE CEDULA AQUí" id="txtFormato2_Cedula" type="number" style="border:none;border-bottom: solid 1px; width:265px;">
-                            , <strong style="text-decoration: underline;">declaro bajo la gravedad de juramento</strong>, que yo (o mis familiares hasta cuarto grado de consanguinidad, segundo de afinidad, primero civil, o mi cónyuge  o compañero/a permanente) tengo (tenemos) control, directo o indirecto, en las siguiente/s sociedad, sociedades comerciales o de hecho, domiciliada en Colombia o en el exterior o tengo cargos directivos en éstas que pueden ser considerados como competencia o parte de la cadena de servicios del <strong>grupo WSP.</strong>
-                            <br><br>
-                            <div class="row">
-                                <div class="table-responsive">
-                                    <table id="tblFormato3_Listado" cellpadding="1" cellspacing="1" class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>Nombre de la sociedad</th>
-                                            <th>NIT</th>
-                                            <th>Domicilio</th>
-                                            <th>Acciones o cargo directivo</th>
-                                            <th>
-                                                <button id="btnFormato3_AgregarFila" class="btn btn-primary btn-block">
-                                                    <i class="fa fa-plus"></i>        
-                                                </button>
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                        <form id="frmFormato3">
+                            <input type="hidden" id="txtFormato3_Formato" class="guardar" value="3">
+                            <textarea id="txtFormato3_Listado" class="hidden guardar"></textarea>
+                            <div class="text-justify">
+                                Yo, 
+                                <input placeholder="INGRESE SU NOMBRE AQUí" id="txtFormato3_Nombre" class="guardar" type="text" style="border:none;border-bottom: solid 1px; width:175px; text-transform: capitalize;" required>
+                                , identificado/a con cédula de ciudadanía No. 
+                                <input placeholder="INGRESE SU NÚMERO DE CEDULA AQUí" id="txtFormato3_Cedula" class="guardar" type="number" style="border:none;border-bottom: solid 1px; width:265px;" required>
+                                , <strong style="text-decoration: underline;">declaro bajo la gravedad de juramento</strong>, que yo (o mis familiares hasta cuarto grado de consanguinidad, segundo de afinidad, primero civil, o mi cónyuge  o compañero/a permanente) tengo (tenemos) control, directo o indirecto, en las siguiente/s sociedad, sociedades comerciales o de hecho, domiciliada en Colombia o en el exterior o tengo cargos directivos en éstas que pueden ser considerados como competencia o parte de la cadena de servicios del <strong>grupo WSP.</strong>
+                                <br><br>
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tblFormato3_Listado" cellpadding="1" cellspacing="1" class="table table-striped">
+                                            <thead>
                                             <tr>
-                                                <td><input type="text" placeholder="Nombre de la sociedad" class="form-control" required></td>
-                                                <td><input type="text" placeholder="NIT" class="form-control" required></td>
-                                                <td><input type="text" placeholder="Domicilio" class="form-control" required></td>
-                                                <td><input type="text" placeholder="Acciones o cargo directivo" class="form-control" required></td>
-                                                <td></td>
+                                                <th>Nombre de la sociedad</th>
+                                                <th>NIT</th>
+                                                <th>Domicilio</th>
+                                                <th>Acciones o cargo directivo</th>
+                                                <th>
+                                                    <button id="btnFormato3_AgregarFila" class="btn btn-primary btn-block">
+                                                        <i class="fa fa-plus"></i>        
+                                                    </button>
+                                                </th>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                </div>                                
-                            </div>
-                            <br><br>
-                            Se suscribe en la ciudad de 
-                            <input id="txtFormato2_Ciudad" type="text" placeholder="INGRESE LA CIUDAD EN LA QUE SE ENCUENTRA AQUí" style="border:none;border-bottom: solid 1px; width:340px; text-transform: capitalize;">
-                             el 23 de febrero de 2017
-                            <br><br><br><br>
-                            Atentamente.
-                            <br><br><br>
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <label class="checkbox-inline"> <input type="checkbox" class="i-checks"> Acepto que he leído y diligenciado éste documento, y estoy de acuerdo con todo lo aquí plasmado</label>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text" placeholder="Nombre de la sociedad" class="form-control" required></td>
+                                                    <td><input type="text" placeholder="NIT" class="form-control" required></td>
+                                                    <td><input type="text" placeholder="Domicilio" class="form-control" required></td>
+                                                    <td><input type="text" placeholder="Acciones o cargo directivo" class="form-control" required></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>                                
                                 </div>
+                                <br><br>
+                                Se suscribe en la ciudad de 
+                                <input id="txtFormato3_Ciudad" type="text" class="guardar" placeholder="INGRESE LA CIUDAD EN LA QUE SE ENCUENTRA AQUí" style="border:none;border-bottom: solid 1px; width:340px; text-transform: capitalize;" required>
+                                 el <span class="lblElDia"></span> de <span class="lblElMes"></span> de <span class="lblElAnio"></span>
+                                <br><br><br><br>
+                                Atentamente.
+                                <br><br><br>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <label class="checkbox-inline"> <input id="txtFormato3_Check" type="checkbox" class="i-checks"> Acepto que he leído y diligenciado éste documento, y estoy de acuerdo con todo lo aquí plasmado</label>
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                <h3 id="lblFormato3_Nombre" style="text-transform: uppercase;"></h3>
+                                NIP: <h3 id="lblFormato3_Cedula"></h3>
+                                <button class="btn btn-success btn-lg">
+                                    <i class="fa fa-floppy-o"></i>
+                                    Envíar
+                                </button>
                             </div>
-                            <br><br><br>
-                            <h3 id="lblFormato2_Nombre" style="text-transform: uppercase;"></h3>
-                            NIP: <h3 id="lblFormato2_Cedula"></h3>
-                            <button class="btn btn-success btn-lg">
-                                <i class="fa fa-floppy-o"></i>
-                                Envíar
-                            </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 
             </div>
@@ -185,75 +191,13 @@
 <script src="../vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="../vendor/iCheck/icheck.min.js"></script>
 <script src="../vendor/sparkline/index.js"></script>
+<script src="../vendor/sweetalert/lib/sweet-alert.min.js"></script>
 
 <!-- App scripts -->
 <script src="../scripts/homer.js"></script>
 
-<script>
-    $("#txtFormato2_Nombre").on("change keyup paste", function()
-    {
-        $("#lblFormato2_Nombre").text($(this).val())
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "175px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 9  + "px");
-        }
-    });
+<script src="../js/funciones.js"></script>
+<script src="../js/formato3.js"></script>
 
-    $("#txtFormato2_Cedula").on("change keyup paste", function()
-    {
-        $("#lblFormato2_Cedula").text($(this).val());
-
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "265px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 12  + "px");
-        }
-    });
-
-    $("#txtFormato2_Ciudad").on("change keyup paste", function()
-    {
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "340px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 9  + "px");
-        }
-    });
-
-    $("#btnFormato3_AgregarFila").on("click", function(evento)
-    {
-        evento.preventDefault();
-
-        var tds = "";
-
-        tds += '<tr>';
-            tds += '<td><input type="text" placeholder="Nombre de la sociedad" class="form-control" required></td>';
-            tds += '<td><input type="text" placeholder="NIT" class="form-control" required></td>';
-            tds += '<td><input type="text" placeholder="Domicilio" class="form-control" required></td>';
-            tds += '<td><input type="text" placeholder="Acciones o cargo directivo" class="form-control" required></td>';
-            tds += '<td>';
-                tds += '<button class="btn btn-danger btn-block btnFormato3_QuitarFila">';
-                    tds += '<i class="fa fa-close"></i>        ';
-                tds += '</button>';
-            tds += '</td>';
-        tds += '</tr>';
-
-        $("#tblFormato3_Listado tbody").append(tds);
-    });
-
-    $(document).delegate('.btnFormato3_QuitarFila', 'click', function(evento) {
-        evento.preventDefault();
-        $(this).parent("td").parent("tr").remove();
-    });
-
-
-    
-</script>
 </body>
 </html>

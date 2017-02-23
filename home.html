@@ -53,15 +53,15 @@
             </button>
             <div class="collapse mobile-navbar" id="mobile-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a class="" href="login.html">Logout</a>
+                    <li class="lnkCerrarSesion">
+                        <a class="" href="index.html">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav no-borders">
-                <li class="dropdown">
+                <li class="dropdown lnkCerrarSesion">
                     <a href="login.html">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
@@ -78,6 +78,7 @@
 <div id="wrapper">
 
 <div class="content animate-panel">
+    <h2>Binvenido: <span id="lblHome_NomUsuario"></span></h2>
         <div class="row">
             <div class="col-md-3">
                 <div class="hpanel">
@@ -157,11 +158,11 @@
                         <div class="hpanel hbggreen">
                             <div class="panel-body">
                                 <div class="text-center">
-                                    <p class="text-big font-light">
+                                    <p class="text-big font-light" id="lblHome_CantF1">
                                         0
                                     </p>
                                     <small>
-                                        Revelaciones de conflicto de interés y autorización de verificación de información realizadas,<br>La última fue en:
+                                        Revelaciones de conflicto de interés y autorización de verificación de información realizadas,<br>La última fue en: <i id="lblHome_FechaF1"></i>
                                     </small>
                                 </div>
                             </div>
@@ -171,11 +172,11 @@
                         <div class="hpanel hbgblue">
                             <div class="panel-body">
                                 <div class="text-center">
-                                    <p class="text-big font-light">
+                                    <p class="text-big font-light" id="lblHome_CantF2">
                                         0
                                     </p>
                                     <small>
-                                        Revelaciones de inexistencia intereses en empresas y cargos directivos de partes relacionadas,<br>La última fue en:
+                                        Revelaciones de inexistencia intereses en empresas y cargos directivos de partes relacionadas,<br>La última fue en: <i id="lblHome_FechaF2"></i>
                                     </small>
                                 </div>
                             </div>
@@ -185,11 +186,11 @@
                         <div class="hpanel hbgyellow">
                             <div class="panel-body">
                                 <div class="text-center">
-                                    <p class="text-big font-light">
+                                    <p class="text-big font-light" id="lblHome_CantF3">
                                         0
                                     </p>
                                     <small>
-                                        Revelaciones de intereses en empresas y cargos directivos de partes relacionadas,<br>La última fue en:
+                                        Revelaciones de intereses en empresas y cargos directivos de partes relacionadas,<br>La última fue en: <i id="lblHome_FechaF3"></i>
                                     </small>
                                 </div>
                             </div>
@@ -225,6 +226,9 @@
 
 <!-- App scripts -->
 <script src="scripts/homer.js"></script>
+
+<script src="js/funciones.js"></script>
+<script src="js/home.js"></script>
 
 
 </body>

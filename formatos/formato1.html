@@ -18,11 +18,13 @@
     <link rel="stylesheet" href="../vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="../vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../vendor/sweetalert/lib/sweet-alert.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="../fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="../fonts/pe-icon-7-stroke/css/helper.css" />
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/static_custom.css">
 
 </head>
 <body class="hide-sidebar">
@@ -53,7 +55,7 @@
             </button>
             <div class="collapse mobile-navbar" id="mobile-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="lnkCerrarSesion">
                         <a class="" href="../index.html">Logout</a>
                     </li>
                 </ul>
@@ -61,7 +63,7 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav no-borders">
-                <li class="dropdown">
+                <li class="dropdown lnkCerrarSesion">
                     <a href="../index.html">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
@@ -90,40 +92,43 @@
             <div class="col-md-8">
                 <div class="hpanel">
                     <div class="panel-body">
-                        <div class="text-justify">
-                            Yo, 
-                            <input placeholder="INGRESE SU NOMBRE AQUí" id="txtFormato1_Nombre" type="text" style="border:none;border-bottom: solid 1px; width:175px; text-transform: capitalize;">
-                            , identificado/a con cédula de ciudadanía No. 
-                            <input placeholder="INGRESE SU NÚMERO DE CEDULA AQUí" id="txtFormato1_Cedula" type="number" style="border:none;border-bottom: solid 1px; width:265px;">
-                            , declaro bajo la gravedad de juramento, que yo, mis familiares hasta cuarto grado de consanguinidad, segundo de afinidad, primero civil, mi cónyuge o compañero/a permanente, no incurrimos en conflictos de interés en la celebración y ejecución de negocios y/o contratos suscritos con alguna de las empresas del grupo WSP|Parsons Brinckerhoff, de la cual soy trabajador.
+                        <form id="frmFormato1">
+                            <input type="hidden" id="txtFormato1_Formato" class="guardar" value="1">
+                            <div class="text-justify">
+                                Yo, 
+                                <input placeholder="INGRESE SU NOMBRE AQUí" id="txtFormato1_Nombre" class="guardar" type="text" style="border:none;border-bottom: solid 1px; width:175px; text-transform: capitalize;" required>
+                                , identificado/a con cédula de ciudadanía No. 
+                                <input placeholder="INGRESE SU NÚMERO DE CEDULA AQUí" id="txtFormato1_Cedula" type="number" class="guardar" style="border:none;border-bottom: solid 1px; width:265px;" required>
+                                , declaro bajo la gravedad de juramento, que yo, mis familiares hasta cuarto grado de consanguinidad, segundo de afinidad, primero civil, mi cónyuge o compañero/a permanente, no incurrimos en conflictos de interés en la celebración y ejecución de negocios y/o contratos suscritos con alguna de las empresas del grupo WSP|Parsons Brinckerhoff, de la cual soy trabajador.
 
-                            También declaro bajo las mismas condiciones que no existe ningún tipo de intermediación o consultoría para la realización de las actividades a ejecutar por parte de alguno de los previamente mencionados que pueda ser considerado conflicto de interés.
-                            <br><br>
-                            En caso de presentarse cualquier situación que pueda ser considerada como conflicto de interés, la revelaré oportunamente.
-                            <br><br>
-                            Autorizo expresamente a <strong>WSP COLOMBIA S.A.S., PARSONS BRINCKERHOFF COLOMBIA S.A.S., WSP SERVICIOS S.A.S., WSP PB SERVICIOS S.A.S., WSP CANADÁ INC SUCURSAL COLOMBIA y TECNOAMBIENTAL S.A.S.,</strong> en cabeza de su representante legal o de quien él designe, para que la información aquí declarada se valide ante las autoridades y/o entes que corresponda.
-                            <br><br>
-                            Reconozco, que no declarar un conflicto de interés es un incumplimiento grave a mis obligaciones como trabajador.
-                            <br><br><br><br>
-                            Se suscribe en la ciudad de 
-                            <input id="txtFormato1_Ciudad" type="text" placeholder="INGRESE LA CIUDAD EN LA QUE SE ENCUENTRA AQUí" style="border:none;border-bottom: solid 1px; width:340px; text-transform: capitalize;">
-                             el 23 de febrero de 2017
-                            <br><br><br><br>
-                            Atentamente.
-                            <br><br><br>
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <label class="checkbox-inline"> <input type="checkbox" class="i-checks"> Acepto que he leído y diligenciado éste documento, y estoy de acuerdo con todo lo aquí plasmado</label>
+                                También declaro bajo las mismas condiciones que no existe ningún tipo de intermediación o consultoría para la realización de las actividades a ejecutar por parte de alguno de los previamente mencionados que pueda ser considerado conflicto de interés.
+                                <br><br>
+                                En caso de presentarse cualquier situación que pueda ser considerada como conflicto de interés, la revelaré oportunamente.
+                                <br><br>
+                                Autorizo expresamente a <strong>WSP COLOMBIA S.A.S., PARSONS BRINCKERHOFF COLOMBIA S.A.S., WSP SERVICIOS S.A.S., WSP PB SERVICIOS S.A.S., WSP CANADÁ INC SUCURSAL COLOMBIA y TECNOAMBIENTAL S.A.S.,</strong> en cabeza de su representante legal o de quien él designe, para que la información aquí declarada se valide ante las autoridades y/o entes que corresponda.
+                                <br><br>
+                                Reconozco, que no declarar un conflicto de interés es un incumplimiento grave a mis obligaciones como trabajador.
+                                <br><br><br><br>
+                                Se suscribe en la ciudad de 
+                                <input id="txtFormato1_Ciudad" type="text" class="guardar" placeholder="INGRESE LA CIUDAD EN LA QUE SE ENCUENTRA AQUí" style="border:none;border-bottom: solid 1px; width:340px; text-transform: capitalize;" required>
+                                 el <span class="lblElDia"></span> de <span class="lblElMes"></span> de <span class="lblElAnio"></span>
+                                <br><br><br><br>
+                                Atentamente.
+                                <br><br><br>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <label class="checkbox-inline"> <input id="txtFormato1_Check" type="checkbox" class="i-checks"> Acepto que he leído y diligenciado éste documento, y estoy de acuerdo con todo lo aquí plasmado</label>
+                                    </div>
                                 </div>
+                                <br><br><br>
+                                <h3 id="lblFormato1_Nombre" style="text-transform: uppercase;"></h3>
+                                NIP: <h3 id="lblFormato1_Cedula"></h3>
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fa fa-floppy-o"></i>
+                                    Envíar
+                                </button>
                             </div>
-                            <br><br><br>
-                            <h3 id="lblFormato1_Nombre" style="text-transform: uppercase;"></h3>
-                            NIP: <h3 id="lblFormato1_Cedula"></h3>
-                            <button class="btn btn-success btn-lg">
-                                <i class="fa fa-floppy-o"></i>
-                                Envíar
-                            </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 
@@ -164,48 +169,14 @@
 <script src="../vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="../vendor/iCheck/icheck.min.js"></script>
 <script src="../vendor/sparkline/index.js"></script>
+<script src="../vendor/sweetalert/lib/sweet-alert.min.js"></script>
 
 <!-- App scripts -->
 <script src="../scripts/homer.js"></script>
 
-<script>
-    $("#txtFormato1_Nombre").on("change keyup paste", function()
-    {
-        $("#lblFormato1_Nombre").text($(this).val())
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "175px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 9  + "px");
-        }
-    });
+<script src="../js/funciones.js"></script>
+<script src="../js/formato1.js"></script>
 
-    $("#txtFormato1_Cedula").on("change keyup paste", function()
-    {
-        $("#lblFormato1_Cedula").text($(this).val());
 
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "265px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 12  + "px");
-        }
-    });
-
-    $("#txtFormato1_Ciudad").on("change keyup paste", function()
-    {
-        if ($(this).val() == "")
-        {
-            $(this).css("width", "340px");
-        } else
-        {
-            $(this).css("width", $(this).val().length * 9  + "px");
-        }
-    });
-
-    
-</script>
 </body>
 </html>
